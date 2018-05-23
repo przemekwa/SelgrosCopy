@@ -19,7 +19,7 @@ namespace SelgrosCopy
             sb.Append($"c:\\Users\\InteractiveS\\Downloads\\{fileName} ");
             sb.Append(@"D:\Przemek\Aktualizacje\ ");
             sb.Append(@"d:\inetpub\SelgrosPG\ ");
-            sb.Append("{version} ");
+            sb.Append($"{version} ");
             sb.Append("false");
 
             return sb.ToString();
