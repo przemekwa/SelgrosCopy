@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SelgrosCopy": {
+      "commandName": "Project",
+      "commandLineArgs": "RO 1234 41003"
+    }
+  }
+}

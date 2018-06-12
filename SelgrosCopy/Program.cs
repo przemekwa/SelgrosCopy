@@ -30,7 +30,9 @@ namespace SelgrosCopy
             }
 
 
-            File.Copy(@"D:\Projects\Selgros\PG\trunk\DBScripts\SelgrosPG_Schema2.sql", Path.Combine(dirInfo.FullName, "SelgrosPG_Schema2.sql"),true );
+            var schema2 = File.ReadAllLines(@"D:\Projects\Selgros\PG\trunk\DBScripts\SelgrosPG_Schema2.sql").Skip(int.Parse(args[2]));
+
+            File.WriteAllLines(Path.Combine(dirInfo.FullName, "SelgrosPG_Schema2.sql"),schema2);
 
             Console.WriteLine($"Copy file SelgrosPG_Schema2.sql to {dirInfo.FullName} successful");
 
@@ -44,7 +46,11 @@ namespace SelgrosCopy
 
             File.WriteAllText(Path.Combine(dirInfo.FullName, "update.bat"),updateScript);
 
+            File.WriteAllText(Path.Combine(dirInfo.FullName, "appsettings.json"), "{\"CheckVersionProcess.ExcludeDirectories\": [\"App_Data\",\"UploadImages\" ]}");
+
             Console.WriteLine($"Update script generated successful");
+
+
         }
     }
 }
