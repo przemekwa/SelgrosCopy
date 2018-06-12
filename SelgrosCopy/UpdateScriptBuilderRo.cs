@@ -4,9 +4,9 @@ using System.Text;
 
 namespace SelgrosCopy
 {
-    class UpdateScriptBuilder
+    public class UpdateScriptBuilderRO : IUpdateScriptBuilder
     {
-        public UpdateScriptBuilder()
+        public UpdateScriptBuilderRO()
         {
 
         }

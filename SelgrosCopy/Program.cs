@@ -20,9 +20,13 @@ namespace SelgrosCopy
 
             switch (args[0])
             {
+                case "PL":
+                    dirInfo = Directory.CreateDirectory(Path.Combine(@"D:\Selgros-Aktualizacja", DateTime.Now.ToString("dd.MM.yyyy")));
+                    updateScript = new UpdateScriptBuilderPL().Build(file.Name, args[1]);
+                    break;
                 case "RO":
                     dirInfo = Directory.CreateDirectory(Path.Combine(@"D:\OneDrive - Business Consulting Center Sp. z o.o\Komputer Rosja-Rumunia\Rumunia\", DateTime.Now.ToString("dd.MM.yyyy")));
-                    updateScript = new UpdateScriptBuilder().Build(file.Name, args[1]);
+                    updateScript = new UpdateScriptBuilderRO().Build(file.Name, args[1]);
                     break;
                 default:
                     dirInfo = Directory.CreateDirectory(Path.Combine(@"D:\OneDrive - Business Consulting Center Sp. z o.o\Komputer Rosja-Rumunia\Rosja\", DateTime.Now.ToString("dd.MM.yyyy")));
