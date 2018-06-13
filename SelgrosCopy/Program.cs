@@ -53,6 +53,7 @@ namespace SelgrosCopy
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("...FAILD");
+                Console.WriteLine(e);
             }
             finally
             {

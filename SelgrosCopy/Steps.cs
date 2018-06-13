@@ -11,6 +11,8 @@ namespace SelgrosCopy
     {
         public static void CreateDir(SelgorsCopyModel model)
         {
+            Console.Write($"Create directory ");
+
             switch (model.Country)
             {
                 case "PL":
@@ -29,7 +31,7 @@ namespace SelgrosCopy
                 File.Delete(item);
             }
 
-            Console.Write($"Create directory {model.DirInfo.FullName}");
+            Console.Write($"{model.DirInfo.FullName}");
         }
 
         public static void CreateSchema2(SelgorsCopyModel model)
@@ -50,9 +52,11 @@ namespace SelgrosCopy
 
         public static void CopyApp(SelgorsCopyModel model)
         {
-            Console.Write($"Copy {model.File.Name}");
+            Console.Write($"Copy");
 
             File.Copy(model.File.FullName, Path.Combine(model.DirInfo.FullName, model.File.Name), true);
+
+            Console.Write($" {model.File.Name}");
         }
 
         public static void CreateUpdateScript(SelgorsCopyModel model)
