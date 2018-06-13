@@ -16,7 +16,6 @@ namespace SelgrosCopy
                 LinesCut = args[2]
             };
 
-
             Console.WriteLine(@"                    ______   ______   .______   ____    ____                  ");
             Console.WriteLine(@"                   /      | /  __  \  |   _  \  \   \  /   /                  ");
             Console.WriteLine(@"                  |  ,----'|  |  |  | |  |_)  |  \   \/   /                   ");
@@ -31,31 +30,8 @@ namespace SelgrosCopy
             Console.WriteLine(@"| _______/    |_______||_______| \______| | _| `._____| \______/  |_______/   ");
             Console.WriteLine();
 
-
-
-
-
-
-            model.File = new DirectoryInfo(Path.Combine(@"D:\Pobrane\"))
-               .GetFiles("Selgros_PG_SPG_QAS_PL_*")
-               .OrderBy(s => s.CreationTime)
-               .Last();
-
-            switch (model.Country)
-            {
-                case "PL":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(@"D:\Selgros-Aktualizacja", DateTime.Now.ToString("dd.MM.yyyy")));
-                    model.UpdateScript = new UpdateScriptBuilderPL().Build(model.File.Name, model.Version);
-                    break;
-                case "RO":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(@"D:\OneDrive - Business Consulting Center Sp. z o.o\Komputer Rosja-Rumunia\Rumunia\", DateTime.Now.ToString("dd.MM.yyyy")));
-                    model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
-                    break;
-                default:
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(@"D:\OneDrive - Business Consulting Center Sp. z o.o\Komputer Rosja-Rumunia\Rosja\", DateTime.Now.ToString("dd.MM.yyyy")));
-                    break;
-            }
-
+            MakeStep(Steps.GetArtifacts, model);
+            MakeStep(Steps.CreateDir, model);
             MakeStep(Steps.CreateSchema2, model);
             MakeStep(Steps.CreateTranslations, model);
             MakeStep(Steps.CopyApp, model);
