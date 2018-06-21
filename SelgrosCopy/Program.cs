@@ -9,12 +9,21 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
+
+            if (!ValidateArgs(args))
+            {
+                return;
+            }
+
             var model = new SelgorsCopyModel
             {
                 Country = args[0],
                 Version = args[1],
                 LinesCut = args[2]
             };
+
+
+
 
             Console.WriteLine(@"                    ______   ______   .______   ____    ____                  ");
             Console.WriteLine(@"                   /      | /  __  \  |   _  \  \   \  /   /                  ");
@@ -38,6 +47,20 @@ namespace SelgrosCopy
             MakeStep(Steps.CreateUpdateScript, model);
             MakeStep(Steps.CreateAppsettings, model);
             MakeStep(Steps.Stop, model);
+        }
+
+        private static bool ValidateArgs(string[] args)
+        {
+            if (args.Length == 0)
+            {
+                 Console.WriteLine("Param 1: country");
+                 Console.WriteLine("Param 2: version");
+                 Console.WriteLine("Param 2: line number");
+
+                return false;
+            }
+
+            return true;
         }
 
         private static void MakeStep(Action<SelgorsCopyModel> action, SelgorsCopyModel model)
