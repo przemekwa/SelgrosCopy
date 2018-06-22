@@ -72,7 +72,8 @@ namespace SelgrosCopy
                     model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
                     break;
                 default:
-                    break;
+                    model.UpdateScript = new UpdateScriptBuilderRU().Build(model.File.Name, model.Version);
+                   break;
             }
 
             File.WriteAllText(Path.Combine(model.DirInfo.FullName, "update.bat"), model.UpdateScript);
