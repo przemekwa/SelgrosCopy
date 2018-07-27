@@ -19,5 +19,19 @@ namespace SelgrosCopy
 
             return sb.ToString();
         }
+
+        public string BuildTest(string fileName, string version)
+        {
+            var sb = new StringBuilder();
+
+            sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append($"{fileName} ");
+            sb.Append(@"D:\aktualizacje-test\ ");
+            sb.Append(@"D:\inetpub\selgrospgtest ");
+            sb.Append($"{version} ");
+            sb.Append("false");
+
+            return sb.ToString();
+        }
     }
 }

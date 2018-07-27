@@ -79,6 +79,26 @@ namespace SelgrosCopy
             File.WriteAllText(Path.Combine(model.DirInfo.FullName, "update.bat"), model.UpdateScript);
         }
 
+        public static void CreateUpdateScriptTestEnv(SelgorsCopyModel model)
+        {
+            Console.Write($"Create update script for test environment");
+
+            switch (model.Country)
+            {
+                case "PL":
+                    model.UpdateScript = new UpdateScriptBuilderPL().BuildTest(model.File.Name, model.Version);
+                    break;
+                case "RO":
+                    model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
+                    break;
+                default:
+                    model.UpdateScript = new UpdateScriptBuilderRU().Build(model.File.Name, model.Version);
+                   break;
+            }
+
+            File.WriteAllText(Path.Combine(model.DirInfo.FullName, "update-test-environment.bat"), model.UpdateScript);
+        }
+
         public static void CreateAppsettings(SelgorsCopyModel model)
         {
             Console.Write($"Create appsettings.json");

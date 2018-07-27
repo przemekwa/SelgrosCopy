@@ -21,5 +21,10 @@ namespace SelgrosCopy
 
             return sb.ToString();
         }
+
+        public string BuildTest(string fileName, string version)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
