@@ -24,7 +24,16 @@ namespace SelgrosCopy
 
         public string BuildTest(string fileName, string version)
         {
-            throw new System.NotImplementedException();
+           var sb = new StringBuilder();
+
+             sb.Append(@"d:\Przemek\ApplicationUpdate\ApplicationUpdater.exe ");
+            sb.Append($"{fileName} ");
+            sb.Append(@"D:\Przemek\Aktualizacje-Test\ ");
+            sb.Append(@"d:\inetpub\pcb_test\ ");
+            sb.Append($"{version} ");
+            sb.Append("false");
+
+            return sb.ToString();
         }
     }
 }

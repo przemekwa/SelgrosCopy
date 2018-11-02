@@ -45,6 +45,7 @@ namespace SelgrosCopy
             MakeStep(Steps.CreateTranslations, model);
             MakeStep(Steps.CopyApp, model);
             MakeStep(Steps.CreateUpdateScript, model);
+            MakeStep(Steps.CreateUpdateScriptTestEnv, model);
             MakeStep(Steps.CreateAppsettings, model);
             MakeStep(Steps.Stop, model);
         }

@@ -92,7 +92,7 @@ namespace SelgrosCopy
                     model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
                     break;
                 default:
-                    model.UpdateScript = new UpdateScriptBuilderRU().Build(model.File.Name, model.Version);
+                    model.UpdateScript = new UpdateScriptBuilderRU().BuildTest(model.File.Name, model.Version);
                    break;
             }
 
@@ -116,7 +116,7 @@ namespace SelgrosCopy
             Console.Write($"Get artifacts file");
 
             model.File = new DirectoryInfo(Path.Combine(@"D:\Pobrane\"))
-               .GetFiles("Selgros_PG_SPG_QAS_PL_*")
+               .GetFiles("Selgros_PG_SPG_*_artifacts.zip")
                .OrderBy(s => s.CreationTime)
                .Last();
 

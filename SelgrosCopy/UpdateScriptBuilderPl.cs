@@ -26,8 +26,8 @@ namespace SelgrosCopy
 
             sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
             sb.Append($"{fileName} ");
-            sb.Append(@"D:\aktualizacje-test\ ");
-            sb.Append(@"D:\inetpub\selgrospgtest ");
+            sb.Append(@"D:\aktualizacje_test\ ");
+            sb.Append(@"D:\inetpub\selgrospg_test ");
             sb.Append($"{version} ");
             sb.Append("false");
 
