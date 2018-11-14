@@ -89,7 +89,7 @@ namespace SelgrosCopy
                     model.UpdateScript = new UpdateScriptBuilderPL().BuildTest(model.File.Name, model.Version);
                     break;
                 case "RO":
-                    model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
+                    model.UpdateScript = new UpdateScriptBuilderRO().BuildTest(model.File.Name, model.Version);
                     break;
                 default:
                     model.UpdateScript = new UpdateScriptBuilderRU().BuildTest(model.File.Name, model.Version);
