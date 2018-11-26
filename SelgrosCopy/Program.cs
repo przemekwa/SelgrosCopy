@@ -9,7 +9,6 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
-
             if (!ValidateArgs(args))
             {
                 return;
@@ -39,20 +38,30 @@ namespace SelgrosCopy
             Console.WriteLine(@"| _______/    |_______||_______| \______| | _| `._____| \______/  |_______/   ");
             Console.WriteLine();
 
-            MakeStep(Steps.GetArtifacts, model);
-            MakeStep(Steps.CreateDir, model);
-            MakeStep(Steps.CreateSchema2, model);
-            MakeStep(Steps.CreateTranslations, model);
-            MakeStep(Steps.CopyApp, model);
-            MakeStep(Steps.CreateUpdateScript, model);
-            MakeStep(Steps.CreateUpdateScriptTestEnv, model);
-            MakeStep(Steps.CreateAppsettings, model);
-            MakeStep(Steps.Stop, model);
+
+
+            try
+            {
+                MakeStep(Steps.GetArtifacts, model);
+                MakeStep(Steps.CreateDir, model);
+                MakeStep(Steps.CreateSchema2, model);
+                MakeStep(Steps.CreateTranslations, model);
+                MakeStep(Steps.CopyApp, model);
+                MakeStep(Steps.CreateUpdateScript, model);
+                MakeStep(Steps.CreateUpdateScriptTestEnv, model);
+                MakeStep(Steps.CreateAppsettings, model);
+                MakeStep(Steps.Stop, model);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"{e.Message}");
+                Console.WriteLine($"{e.StackTrace}");
+            }
         }
 
         private static bool ValidateArgs(string[] args)
         {
-            if (args.Length == 0)
+            if (args.Length != 3)
             {
                  Console.WriteLine("Param 1: country");
                  Console.WriteLine("Param 2: version");

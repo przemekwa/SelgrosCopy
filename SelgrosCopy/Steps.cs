@@ -21,9 +21,11 @@ namespace SelgrosCopy
                 case "RO":
                     model.DirInfo = Directory.CreateDirectory(Path.Combine(Consts.RomaniaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
                     break;
-                default:
+                case "RU":
                     model.DirInfo = Directory.CreateDirectory(Path.Combine(Consts.RussiaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
                     break;
+                default:
+                    throw new Exception($"{model.Country} is not valid country");
             }
 
             foreach (var item in Directory.GetFiles(model.DirInfo.FullName))
