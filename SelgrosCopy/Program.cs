@@ -1,5 +1,6 @@
 ﻿using SelgrosCopy.Model;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -39,33 +40,24 @@ namespace SelgrosCopy
             Console.WriteLine();
 
 
-
-            try
-            {
-                MakeStep(Steps.GetArtifacts, model);
-                MakeStep(Steps.CreateDir, model);
-                MakeStep(Steps.CreateSchema2, model);
-                MakeStep(Steps.CreateTranslations, model);
-                MakeStep(Steps.CopyApp, model);
-                MakeStep(Steps.CreateUpdateScript, model);
-                MakeStep(Steps.CreateUpdateScriptTestEnv, model);
-                MakeStep(Steps.CreateAppsettings, model);
-                MakeStep(Steps.Stop, model);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine($"{e.Message}");
-                Console.WriteLine($"{e.StackTrace}");
-            }
+            MakeStep(Steps.GetArtifacts, model);
+            MakeStep(Steps.CreateDir, model);
+            MakeStep(Steps.CreateSchema2, model);
+            MakeStep(Steps.CreateTranslations, model);
+            MakeStep(Steps.CopyApp, model);
+            MakeStep(Steps.CreateUpdateScript, model);
+            MakeStep(Steps.CreateUpdateScriptTestEnv, model);
+            MakeStep(Steps.CreateAppsettings, model);
+            MakeStep(Steps.Stop, model);
         }
 
         private static bool ValidateArgs(string[] args)
         {
             if (args.Length != 3)
             {
-                 Console.WriteLine("Param 1: country");
-                 Console.WriteLine("Param 2: version");
-                 Console.WriteLine("Param 2: line number");
+                Console.WriteLine("Param 1: country");
+                Console.WriteLine("Param 2: version");
+                Console.WriteLine("Param 2: line number");
 
                 return false;
             }
@@ -86,7 +78,8 @@ namespace SelgrosCopy
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("...FAILD");
-                Console.WriteLine(e);
+                //Console.WriteLine(e);
+                throw;
             }
             finally
             {

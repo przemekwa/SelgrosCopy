@@ -73,9 +73,11 @@ namespace SelgrosCopy
                 case "RO":
                     model.UpdateScript = new UpdateScriptBuilderRO().Build(model.File.Name, model.Version);
                     break;
-                default:
+                     case "RU":
                     model.UpdateScript = new UpdateScriptBuilderRU().Build(model.File.Name, model.Version);
-                   break;
+                    break;
+                default:
+                    throw new Exception($"{model.Country} is not valid country");
             }
 
             File.WriteAllText(Path.Combine(model.DirInfo.FullName, "update.bat"), model.UpdateScript);
@@ -93,9 +95,11 @@ namespace SelgrosCopy
                 case "RO":
                     model.UpdateScript = new UpdateScriptBuilderRO().BuildTest(model.File.Name, model.Version);
                     break;
-                default:
+                case "RU":
                     model.UpdateScript = new UpdateScriptBuilderRU().BuildTest(model.File.Name, model.Version);
-                   break;
+                    break;
+                default:
+                     throw new Exception($"{model.Country} is not valid country");
             }
 
             File.WriteAllText(Path.Combine(model.DirInfo.FullName, "update-test-environment.bat"), model.UpdateScript);
