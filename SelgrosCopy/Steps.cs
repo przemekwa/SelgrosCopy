@@ -142,7 +142,7 @@ namespace SelgrosCopy
         //    var rq = new RestRequest(Method.POST);
 
           
-        //      var pass = Base64Encode($"walkowskip:*#polak2");
+            
           
         //    rq.RequestFormat = DataFormat.Json;
         //    rq.AddHeader("Content-Type","application/json");
