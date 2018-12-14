@@ -10,6 +10,10 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
+
+            Steps.CreatePage(null);
+            return;
+
             if (!ValidateArgs(args))
             {
                 return;
