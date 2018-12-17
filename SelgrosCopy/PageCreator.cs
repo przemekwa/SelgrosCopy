@@ -55,7 +55,7 @@ namespace SelgrosCopy
 
             var rq = new RestRequest(Method.POST);
 
-            var pass = Base64Encode($"walkowskip:*#polak2");
+            var pass = "";
 
             rq.RequestFormat = DataFormat.Json;
             
