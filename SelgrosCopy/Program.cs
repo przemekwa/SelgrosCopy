@@ -21,12 +21,9 @@ namespace SelgrosCopy
                 Version = args[1],
                 LinesCut = args[2],
                 LineEnd= args[3],
-                RealeseNotes= args[4],
-                WebConfigNotes = args[5]
+                RealeseNotes= GetNullParam(4, args, string.Empty),
+                WebConfigNotes = GetNullParam(5, args, "Zmiana numeru wersji na {0}")
             };
-
-
-
 
             Console.WriteLine(@"                    ______   ______   .______   ____    ____                  ");
             Console.WriteLine(@"                   /      | /  __  \  |   _  \  \   \  /   /                  ");
@@ -51,13 +48,65 @@ namespace SelgrosCopy
             MakeStep(Steps.CreateUpdateScript, model);
             MakeStep(Steps.CreateUpdateScriptTestEnv, model);
             MakeStep(Steps.CreateAppsettings, model);
-            MakeStep(Steps.CreatePage, model);
+            MakeStepWithQuestion(Steps.CreatePage, model);
             MakeStep(Steps.Stop, model);
+        }
+
+        private static string GetNullParam(int v, string[] args, string @default)
+        {
+            if (args.Length >= v+1)
+            {
+                return args[v];
+            }
+            else
+            {
+                return @default;
+            }
+        }
+
+        private static void MakeStepWithQuestion(Action<SelgorsCopyModel> action, SelgorsCopyModel model)
+        {
+            try
+            {
+                var q = $"Do you want to continue with  {action.Method.Name } step [Y/n]?";
+
+                Console.Write(q);
+
+                
+                ConsoleKey key = ConsoleKey.Escape;
+
+                while((key = Console.ReadKey(true).Key) != ConsoleKey.Escape )
+                {
+
+                    if (key == ConsoleKey.Y)
+                    {
+                        action(model);
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                        Console.WriteLine("...successful");
+                    }
+                    else if (key == ConsoleKey.N)
+                    {
+                        break;
+                    }
+                }
+
+            }
+            catch (Exception e)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("...FAILD");
+                //Console.WriteLine(e);
+                throw;
+            }
+            finally
+            {
+                Console.ResetColor();
+            }
         }
 
         private static bool ValidateArgs(string[] args)
         {
-            if (args.Length != 6)
+            if (args.Length != 4)
             {
                 Console.WriteLine("Param 1: country");
                 Console.WriteLine("Param 2: version");

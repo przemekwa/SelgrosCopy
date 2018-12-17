@@ -2,7 +2,7 @@
   "profiles": {
     "SelgrosCopy": {
       "commandName": "Project",
-      "commandLineArgs": "PL 1234 41003"
+      "commandLineArgs": "PL 1234 41003 1 \"cos tam\" \"web\""
     }
   }
 }

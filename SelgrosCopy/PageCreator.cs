@@ -46,7 +46,7 @@ namespace SelgrosCopy
 
             template = FillDate(template);
 
-            return CreatePage($"{DateTime.Now.ToString("YYYY-MM-dd HH:mm", CultureInfo.InvariantCulture)} (v{selgorsCopyModel.Version})", template);
+            return CreatePage($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)} (v{selgorsCopyModel.Version})", template);
 
 
         }
@@ -96,7 +96,7 @@ namespace SelgrosCopy
                 template.Replace("##NEW_VERSION##", $"v{selgorsCopyModel.Version}")
                 .Replace("##REALESE_NOTE##", selgorsCopyModel.RealeseNotes)
                 .Replace("##SCHEMA_ENDLINE_NUMBER##", selgorsCopyModel.LineEnd)
-                .Replace("##WEB_CONFIG_CHANGES##", selgorsCopyModel.WebConfigNotes);
+                .Replace("##WEB_CONFIG_CHANGES##", selgorsCopyModel.WebConfigNotes.Replace("{0}",selgorsCopyModel.Version));
 
         public static string Base64Encode(string plainText) {
           var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
