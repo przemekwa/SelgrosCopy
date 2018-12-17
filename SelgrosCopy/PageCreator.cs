@@ -47,8 +47,6 @@ namespace SelgrosCopy
             template = FillDate(template);
 
             return CreatePage($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm", CultureInfo.InvariantCulture)} (v{selgorsCopyModel.Version})", template);
-
-
         }
 
         private bool CreatePage(string title, string template)

@@ -83,6 +83,7 @@ namespace SelgrosCopy
                         action(model);
                         Console.ForegroundColor = ConsoleColor.Yellow;
                         Console.WriteLine("...successful");
+                        break;
                     }
                     else if (key == ConsoleKey.N)
                     {
