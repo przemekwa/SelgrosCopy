@@ -10,10 +10,6 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
-
-            Steps.CreatePage(null);
-            return;
-
             if (!ValidateArgs(args))
             {
                 return;
@@ -23,7 +19,10 @@ namespace SelgrosCopy
             {
                 Country = args[0],
                 Version = args[1],
-                LinesCut = args[2]
+                LinesCut = args[2],
+                LineEnd= args[3],
+                RealeseNotes= args[4],
+                WebConfigNotes = args[5]
             };
 
 
@@ -40,7 +39,7 @@ namespace SelgrosCopy
             Console.WriteLine(@"   |   (----`|  |__   |  |     |  |  __  |  |_)  |    |  |  |  |    |   (----`");
             Console.WriteLine(@"    \   \    |   __|  |  |     |  | |_ | |      /     |  |  |  |     \   \    ");
             Console.WriteLine(@".----)   |   |  |____ |  `----.|  |__| | |  |\  \----.|  `--'  | .----)   |   ");
-            Console.WriteLine(@"| _______/    |_______||_______| \______| | _| `._____| \______/  |_______/   ");
+            Console.WriteLine(@"|_______/    |_______||_______| \______| | _| `._____| \______/  |_______/   ");
             Console.WriteLine();
 
 
@@ -52,16 +51,20 @@ namespace SelgrosCopy
             MakeStep(Steps.CreateUpdateScript, model);
             MakeStep(Steps.CreateUpdateScriptTestEnv, model);
             MakeStep(Steps.CreateAppsettings, model);
+            MakeStep(Steps.CreatePage, model);
             MakeStep(Steps.Stop, model);
         }
 
         private static bool ValidateArgs(string[] args)
         {
-            if (args.Length != 3)
+            if (args.Length != 6)
             {
                 Console.WriteLine("Param 1: country");
                 Console.WriteLine("Param 2: version");
                 Console.WriteLine("Param 2: line number");
+                Console.WriteLine("Param 3: new line number");
+                Console.WriteLine("Param 4: realese notes");
+                Console.WriteLine("Param 5: web config notes");
 
                 return false;
             }

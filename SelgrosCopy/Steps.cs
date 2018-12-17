@@ -133,55 +133,9 @@ namespace SelgrosCopy
 
         public static void CreatePage(SelgorsCopyModel model)
         {
-            const int PAGE_UPDATE_POLAND_ID = 7112172;
-            const int PAGE_UPDATE_RUSIA_ID = 7112174;
-            const int PAGE_UPDATE_ROMANIA_ID = 7131214;
+            var pageCreator = new PageCreator(model);
 
-
-
-            var template = GetResourceStream("SelgrosCopy.Templates.release_page.html")
-                .Replace("\"","\\\"")
-                .Replace(Environment.NewLine,"")
-                
-                .Replace("##NEW_VERSION##","c99.123456").Replace("##REALESE_NOTE###","Test automatycznego tworzenia strony");
-
-            var rC = new RestClient("https://confluence.snpgroup.com/rest/api/content/");
-
-            var rq = new RestRequest(Method.POST);
-
-
-            
-
-            rq.RequestFormat = DataFormat.Json;
-            rq.AddHeader("Content-Type", "application/json");
-            rq.AddHeader("Authorization", $"Basic {pass}");
-
-            var body = $"{{ 	\"type\": \"page\", 	\"title\": \"2018-12-14 17:31 (v99.647) (test) \", 	\"ancestors\":[{{\"id\":7112172}}], 	\"space\": {{ 		\"key\": \"SPDT\" 	}}, 	\"body\": {{ 		\"storage\": {{ 			\"value\": \"{template}\", 			\"representation\": \"storage\" 		}} 	}} }}";
-
-            //rq.AddJsonBody(body);
-
-            rq.AddParameter("application/json", body, ParameterType.RequestBody);
-
-            var result = rC.Execute(rq, Method.POST);
-
-        }
-
-        public static string Base64Encode(string plainText) {
-          var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-          return Convert.ToBase64String(plainTextBytes);
-        }
-
-         public static  string GetResourceStream(string resource)
-        {
-            var assembly = typeof(SelgrosCopy.Program).GetTypeInfo().Assembly;
-
-            using (Stream stream = assembly.GetManifestResourceStream(resource))
-            {
-                using (StreamReader reader = new StreamReader(stream))
-                {
-                    return reader.ReadToEnd();
-                }
-            }
+            pageCreator.Create();
         }
     }
 }
