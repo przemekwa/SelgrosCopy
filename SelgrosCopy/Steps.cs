@@ -42,9 +42,13 @@ namespace SelgrosCopy
         {
             Console.Write($"CreateSchema");
 
-            var schema2 = File.ReadAllLines(Consts.Schema2FilePath).Skip(int.Parse(model.LinesCut));
+            var schema2 = File.ReadAllLines(Consts.Schema2FilePath);
 
-            File.WriteAllLines(Path.Combine(model.DirInfo.FullName, "SelgrosPG_Schema2.sql"), schema2);
+            model.LineEnd = schema2.Length.ToString();
+                
+            var lines = schema2.Skip(int.Parse(model.LinesCut));
+
+            File.WriteAllLines(Path.Combine(model.DirInfo.FullName, "SelgrosPG_Schema2.sql"), lines);
         }
 
         public static void CreateTranslations(SelgorsCopyModel model)

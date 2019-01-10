@@ -20,9 +20,8 @@ namespace SelgrosCopy
                 Country = args[0],
                 Version = args[1],
                 LinesCut = args[2],
-                LineEnd= args[3],
-                RealeseNotes= GetNullParam(4, args, string.Empty),
-                WebConfigNotes = GetNullParam(5, args, "Zmiana numeru wersji na {0}")
+                RealeseNotes= GetNullParam(3, args, string.Empty),
+                WebConfigNotes = GetNullParam(4, args, "Zmiana numeru wersji na {0}")
             };
 
             Console.WriteLine(@"                    ______   ______   .______   ____    ____                  ");
@@ -107,12 +106,11 @@ namespace SelgrosCopy
 
         private static bool ValidateArgs(string[] args)
         {
-            if (args.Length != 4)
+            if (args.Length < 4)
             {
                 Console.WriteLine("Param 1: country");
                 Console.WriteLine("Param 2: version");
-                Console.WriteLine("Param 2: line number");
-                Console.WriteLine("Param 3: new line number");
+                Console.WriteLine("Param 3: line number");
                 Console.WriteLine("Param 4: realese notes");
                 Console.WriteLine("Param 5: web config notes");
 
