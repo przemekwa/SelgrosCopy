@@ -55,7 +55,7 @@ namespace SelgrosCopy
 
             var rq = new RestRequest(Method.POST);
 
-         
+            var pass = Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"]);
 
             rq.RequestFormat = DataFormat.Json;
             

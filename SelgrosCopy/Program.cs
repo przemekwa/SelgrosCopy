@@ -1,4 +1,5 @@
 ﻿using CommandLine;
+using Microsoft.Extensions.Configuration;
 using SelgrosCopy.Model;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,9 @@ namespace SelgrosCopy
                     .WithParsed<CommandLineOptions>(o =>
                     {
                         model = o;
+                        model.Configuration = new ConfigurationBuilder()
+                                            .AddUserSecrets<UserSecret>()
+                                            .Build();
                     })
                     .WithNotParsed(errorList =>
                     {

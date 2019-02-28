@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace SelgrosCopy.Model
 {
@@ -16,8 +17,6 @@ namespace SelgrosCopy.Model
         public string RealeseNotes { get; internal set; }
         public string LineEnd { get; internal set; }
         public string WebConfigNotes { get; internal set; }
-
-
-       
+        public IConfigurationRoot Configuration { get; internal set; }
     }
 }
