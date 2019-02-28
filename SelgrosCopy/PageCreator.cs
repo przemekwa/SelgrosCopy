@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using SelgrosCopy.Model;
 using System;
 using System.Collections.Generic;
@@ -53,18 +54,40 @@ namespace SelgrosCopy
         {
             var rC = new RestClient("https://confluence.snpgroup.com/rest/api/content/");
 
-            var rq = new RestRequest(Method.POST);
-
-            var pass = Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"]);
-
-            rq.RequestFormat = DataFormat.Json;
+            var rq = new RestRequest(Method.POST)
+            {
+                RequestFormat = DataFormat.Json
+            };
             
             rq.AddHeader("Content-Type", "application/json");
-            rq.AddHeader("Authorization", $"Basic {pass}");
+            rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}");
 
-            var body = $"{{ 	\"type\": \"page\", 	\"title\": \"{title} \", 	\"ancestors\":[{{\"id\":{id}}}], 	\"space\": {{ 		\"key\": \"SPDT\" 	}}, 	\"body\": {{ 		\"storage\": {{ 			\"value\": \"{template}\", 			\"representation\": \"storage\" 		}} 	}} }}";
+            var body = new Page
+            {
+                type = "page",
+                title = title,
+                space = new Space
+                {
+                    key = "SPDT"
+                },
+                ancestors = new List<Ancestor>
+                {
+                    new Ancestor
+                    {
+                        id = id
+                    }
+                }.ToArray(),
+                body = new Body {
+                    storage = new Storage
+                    {
+                        value = template,
+                        representation = "storage"
+                    }
+                }
+            };
 
-            rq.AddParameter("application/json", body, ParameterType.RequestBody);
+            var serializedBody = JsonConvert.SerializeObject(body);
+            rq.AddParameter("application/json", serializedBody, ParameterType.RequestBody);
 
             var result = rC.Execute(rq, Method.POST);
 
@@ -73,7 +96,6 @@ namespace SelgrosCopy
 
         private string GetTemplate()
             => GetResourceStream("SelgrosCopy.Templates.release_page.html")
-                 .Replace("\"", "\\\"")
                 .Replace(Environment.NewLine, "");
 
 
