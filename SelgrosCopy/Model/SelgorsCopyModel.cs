@@ -16,5 +16,8 @@ namespace SelgrosCopy.Model
         public string RealeseNotes { get; internal set; }
         public string LineEnd { get; internal set; }
         public string WebConfigNotes { get; internal set; }
+
+
+       
     }
 }

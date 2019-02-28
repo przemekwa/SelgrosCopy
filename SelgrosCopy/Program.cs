@@ -1,8 +1,10 @@
-﻿using SelgrosCopy.Model;
+﻿using CommandLine;
+using SelgrosCopy.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace SelgrosCopy
 {
@@ -10,19 +12,23 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
-            if (!ValidateArgs(args))
-            {
-                return;
-            }
+            SelgorsCopyModel model = null;
 
-            var model = new SelgorsCopyModel
-            {
-                Country = args[0],
-                Version = args[1],
-                LinesCut = args[2],
-                RealeseNotes= GetNullParam(3, args, string.Empty),
-                WebConfigNotes = GetNullParam(4, args, "Zmiana numeru wersji na {0}")
-            };
+            var result = Parser.Default.ParseArguments<CommandLineOptions>(args)
+                    .WithParsed<CommandLineOptions>(o =>
+                    {
+                        model = o;
+                    })
+                    .WithNotParsed(errorList =>
+                    {
+                        Environment.Exit(100);
+
+                    });
+
+            var exePath = Path.GetDirectoryName(System.Reflection
+                  .Assembly.GetExecutingAssembly().CodeBase);
+            Regex appPathMatcher = new Regex(@"(?<!fil)[A-Za-z]:\\+[\S\s]*?(?=\\+bin)");
+            var appRoot = appPathMatcher.Match(exePath).Value;
 
             Console.WriteLine(@"                    ______   ______   .______   ____    ____                  ");
             Console.WriteLine(@"                   /      | /  __  \  |   _  \  \   \  /   /                  ");
@@ -53,7 +59,7 @@ namespace SelgrosCopy
 
         private static string GetNullParam(int v, string[] args, string @default)
         {
-            if (args.Length >= v+1)
+            if (args.Length >= v + 1)
             {
                 return args[v];
             }
@@ -63,6 +69,8 @@ namespace SelgrosCopy
             }
         }
 
+
+
         private static void MakeStepWithQuestion(Action<SelgorsCopyModel> action, SelgorsCopyModel model)
         {
             try
@@ -71,10 +79,10 @@ namespace SelgrosCopy
 
                 Console.Write(q);
 
-                
+
                 ConsoleKey key = ConsoleKey.Escape;
 
-                while((key = Console.ReadKey(true).Key) != ConsoleKey.Escape )
+                while ((key = Console.ReadKey(true).Key) != ConsoleKey.Escape)
                 {
 
                     if (key == ConsoleKey.Y)
@@ -86,6 +94,8 @@ namespace SelgrosCopy
                     }
                     else if (key == ConsoleKey.N)
                     {
+
+                        Console.WriteLine("...skip");
                         break;
                     }
                 }
@@ -104,21 +114,7 @@ namespace SelgrosCopy
             }
         }
 
-        private static bool ValidateArgs(string[] args)
-        {
-            if (args.Length < 4)
-            {
-                Console.WriteLine("Param 1: country");
-                Console.WriteLine("Param 2: version");
-                Console.WriteLine("Param 3: line number");
-                Console.WriteLine("Param 4: realese notes");
-                Console.WriteLine("Param 5: web config notes");
 
-                return false;
-            }
-
-            return true;
-        }
 
         private static void MakeStep(Action<SelgorsCopyModel> action, SelgorsCopyModel model)
         {
