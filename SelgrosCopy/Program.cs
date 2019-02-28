@@ -22,7 +22,6 @@ namespace SelgrosCopy
                     .WithNotParsed(errorList =>
                     {
                         Environment.Exit(100);
-
                     });
 
             var exePath = Path.GetDirectoryName(System.Reflection
