@@ -58,7 +58,7 @@ namespace SelgrosCopy
             {
                 RequestFormat = DataFormat.Json
             };
-            
+
             rq.AddHeader("Content-Type", "application/json");
             rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}");
 
@@ -114,7 +114,7 @@ namespace SelgrosCopy
 
         private string FillDate(string template) =>
                 template.Replace("##NEW_VERSION##", $"v{selgorsCopyModel.Version}")
-                .Replace("##REALESE_NOTE##", selgorsCopyModel.RealeseNotes)
+                .Replace("##REALESE_NOTE##", selgorsCopyModel.RealeseNotes.Replace("&","&amp;"))
                 .Replace("##SCHEMA_ENDLINE_NUMBER##", selgorsCopyModel.LineEnd)
                 .Replace("##WEB_CONFIG_CHANGES##", selgorsCopyModel.WebConfigNotes.Replace("{0}",selgorsCopyModel.Version));
 
