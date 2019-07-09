@@ -15,9 +15,9 @@ namespace SelgrosCopy
         private SelgorsCopyModel selgorsCopyModel;
         private int id;
 
-           const int PAGE_UPDATE_POLAND_ID = 7112172;
-            const int PAGE_UPDATE_RUSIA_ID = 7112174;
-            const int PAGE_UPDATE_ROMANIA_ID = 7131214;
+           const int PAGE_UPDATE_POLAND_ID = 73539382;
+            const int PAGE_UPDATE_RUSIA_ID = 73539378;
+            const int PAGE_UPDATE_ROMANIA_ID = 73539779;
 
 
         public PageCreator(SelgorsCopyModel selgorsCopyModel)
@@ -52,7 +52,7 @@ namespace SelgrosCopy
 
         private bool CreatePage(string title, string template)
         {
-            var rC = new RestClient("https://confluence.service.snp-ag.com/rest/api/content/");
+            var rC = new RestClient("https://confluence.service.snp-ag.com/confluence/rest/api/content/");
 
             var rq = new RestRequest(Method.POST)
             {
