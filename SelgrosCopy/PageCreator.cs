@@ -60,7 +60,7 @@ namespace SelgrosCopy
             };
 
             rq.AddHeader("Content-Type", "application/json");
-            rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}");
+            rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}"); // dotnet user-secrets set "Jira:Pass" "userName:password"
 
             var body = new Page
             {
