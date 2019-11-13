@@ -115,7 +115,7 @@ namespace SelgrosCopy
         {
             Console.Write($"Create appsettings.json");
 
-            File.WriteAllText(Path.Combine(model.DirInfo.FullName, "appsettings.json"), "{\"CheckVersionProcess.ExcludeDirectories\": [\"App_Data\",\"UploadImages\",\"logs\" ]}");
+            File.WriteAllText(Path.Combine(model.DirInfo.FullName, "appsettings.json"), "{\"CheckVersionProcess.ExcludeDirectories\": [\"App_Data\",\"UploadImages\",\"logs\" ],\"Web.Config.AppSettings.Version.KeyName\": \"AppVersion\"}");
         }
 
         public static void Stop(SelgorsCopyModel model)
