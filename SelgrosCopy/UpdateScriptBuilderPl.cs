@@ -11,6 +11,7 @@ namespace SelgrosCopy
             var sb = new StringBuilder();
 
             sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"Selgros ");
             sb.Append($"{fileName} ");
             sb.Append(@"D:\aktualizacje\ ");
             sb.Append(@"D:\inetpub\selgrospg\ ");
@@ -25,6 +26,7 @@ namespace SelgrosCopy
             var sb = new StringBuilder();
 
             sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"Selgros ");
             sb.Append($"{fileName} ");
             sb.Append(@"D:\aktualizacje_test\ ");
             sb.Append(@"D:\inetpub\selgrospg_test\ ");
