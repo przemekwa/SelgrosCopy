@@ -20,5 +20,11 @@ namespace SelgrosCopy.Model
         public string LineEnd { get; internal set; }
         public string WebConfigNotes { get; internal set; }
         public IConfigurationRoot Configuration { get; internal set; }
+
+        public string SchemaFilePath { get; set; }
+        public string TranslationsFilePath { get; set; }
+        public string PolandDestinationPath { get; set; }
+        public string RomaniaDestinationPath { get; set; }
+        public string RussiaDestinationPath { get; set; }
     }
 }

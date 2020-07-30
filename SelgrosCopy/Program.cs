@@ -13,6 +13,12 @@ namespace SelgrosCopy
     {
         static void Main(string[] args)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+            var configuration = builder.Build();
+
             SelgorsCopyModel model = null;
 
             var result = Parser.Default.ParseArguments<CommandLineOptions>(args)
@@ -27,6 +33,12 @@ namespace SelgrosCopy
                     {
                         Environment.Exit(100);
                     });
+
+            model.SchemaFilePath = configuration[nameof(model.SchemaFilePath)];
+            model.PolandDestinationPath = configuration[nameof(model.PolandDestinationPath)];
+            model.RomaniaDestinationPath = configuration[nameof(model.RomaniaDestinationPath)];
+            model.RussiaDestinationPath = configuration[nameof(model.RussiaDestinationPath)];
+            model.TranslationsFilePath = configuration[nameof(model.TranslationsFilePath)];
 
             var exePath = Path.GetDirectoryName(System.Reflection
                   .Assembly.GetExecutingAssembly().CodeBase);
