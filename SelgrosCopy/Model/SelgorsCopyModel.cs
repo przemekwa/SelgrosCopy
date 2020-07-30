@@ -26,5 +26,6 @@ namespace SelgrosCopy.Model
         public string PolandDestinationPath { get; set; }
         public string RomaniaDestinationPath { get; set; }
         public string RussiaDestinationPath { get; set; }
+        public string ArtifactsZipPath { get; set; }
     }
 }

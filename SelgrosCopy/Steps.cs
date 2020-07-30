@@ -127,7 +127,7 @@ namespace SelgrosCopy
         {
             Console.Write($"Get artifacts file");
 
-            model.File = new DirectoryInfo(Path.Combine(@"D:\Pobrane\"))
+            model.File = new DirectoryInfo(Path.Combine(model.ArtifactsZipPath))
                .GetFiles("Selgros_PG_SPG_*_artifacts.zip")
                .OrderBy(s => s.CreationTime)
                .Last();

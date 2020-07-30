@@ -39,6 +39,7 @@ namespace SelgrosCopy
             model.RomaniaDestinationPath = configuration[nameof(model.RomaniaDestinationPath)];
             model.RussiaDestinationPath = configuration[nameof(model.RussiaDestinationPath)];
             model.TranslationsFilePath = configuration[nameof(model.TranslationsFilePath)];
+            model.ArtifactsZipPath = configuration[nameof(model.ArtifactsZipPath)];
 
             var exePath = Path.GetDirectoryName(System.Reflection
                   .Assembly.GetExecutingAssembly().CodeBase);
