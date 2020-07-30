@@ -18,13 +18,13 @@ namespace SelgrosCopy
             switch (model.Country)
             {
                 case "PL":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(Consts.PolandDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.PolandDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
                     break;
                 case "RO":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(Consts.RomaniaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RomaniaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
                     break;
                 case "RU":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(Consts.RussiaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RussiaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
                     break;
                 default:
                     throw new Exception($"{model.Country} is not valid country");
@@ -42,7 +42,7 @@ namespace SelgrosCopy
         {
             Console.Write($"CreateSchema");
 
-            var schema2 = File.ReadAllLines(Consts.Schema2FilePath);
+            var schema2 = File.ReadAllLines(model.SchemaFilePath);
 
             model.LineEnd = schema2.Length.ToString();
                 
@@ -55,7 +55,7 @@ namespace SelgrosCopy
         {
             Console.Write($"Copy translations");
 
-            File.Copy(Consts.TranslationsFilePath, Path.Combine(model.DirInfo.FullName, "SelgrosPG_Translations.sql"), true);
+            File.Copy(model.TranslationsFilePath, Path.Combine(model.DirInfo.FullName, "SelgrosPG_Translations.sql"), true);
         }
 
         public static void CopyApp(SelgorsCopyModel model)
@@ -127,7 +127,7 @@ namespace SelgrosCopy
         {
             Console.Write($"Get artifacts file");
 
-            model.File = new DirectoryInfo(Path.Combine(@"D:\Pobrane\"))
+            model.File = new DirectoryInfo(Path.Combine(model.ArtifactsZipPath))
                .GetFiles("Selgros_PG_SPG_*_artifacts.zip")
                .OrderBy(s => s.CreationTime)
                .Last();
