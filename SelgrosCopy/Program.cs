@@ -14,7 +14,7 @@ namespace SelgrosCopy
         static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
+                .SetBasePath(Directory.GetParent(AppContext.BaseDirectory).FullName)
                 .AddJsonFile("appsettings.json");
 
             var configuration = builder.Build();
