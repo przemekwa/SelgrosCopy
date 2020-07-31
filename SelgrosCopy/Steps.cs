@@ -14,17 +14,17 @@ namespace SelgrosCopy
         public static void CreateDir(SelgorsCopyModel model)
         {
             Console.Write($"Create directory ");
-
+            
             switch (model.Country)
             {
                 case "PL":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.PolandDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.PolandDestinationPath, $"poland_{DateTime.Now:dd_MMMM_yyyy_HH_mm_ss}"));
                     break;
                 case "RO":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RomaniaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RomaniaDestinationPath, $"romania_{DateTime.Now:dd_MMMM_yyyy_HH_mm_ss}"));
                     break;
                 case "RU":
-                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RussiaDestinationPath, DateTime.Now.ToString("dd.MM.yyyy")));
+                    model.DirInfo = Directory.CreateDirectory(Path.Combine(model.RussiaDestinationPath, $"russia_{DateTime.Now:dd_MMMM_yyyy_HH_mm_ss}"));
                     break;
                 default:
                     throw new Exception($"{model.Country} is not valid country");
