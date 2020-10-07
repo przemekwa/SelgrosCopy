@@ -13,11 +13,12 @@ namespace SelgrosCopy
             var sb = new StringBuilder();
 
             sb.Append(@"d:\Przemek\ApplicationUpdate\ApplicationUpdater.exe ");
-            sb.Append($"{fileName} ");
-            sb.Append(@"D:\Przemek\Aktualizacje\ ");
-            sb.Append(@"d:\inetpub\pcb\ ");
-            sb.Append($"{version} ");
-            sb.Append("false");
+            sb.Append(@"--strategy Selgros ");
+            sb.Append($"--zipFile {fileName} ");
+            sb.Append(@"--backup D:\Przemek\Aktualizacje\ ");
+            sb.Append(@"--inetpub d:\inetpub\wwwroot\pcb ");
+            sb.Append($"--appversion {version} ");
+            sb.Append("--undo false");
 
             return sb.ToString();
         }
