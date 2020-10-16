@@ -16,11 +16,12 @@ namespace SelgrosCopy
             var sb = new StringBuilder();
 
             sb.Append(@"d:\Przemek\ApplicationUpdate\ApplicationUpdater.exe ");
-            sb.Append($"{fileName} ");
-            sb.Append(@"D:\Przemek\Aktualizacje\ ");
-            sb.Append(@"d:\inetpub\SelgrosPG\ ");
-            sb.Append($"{version} ");
-            sb.Append("false");
+            sb.Append(@"--strategy Selgros ");
+            sb.Append($"--zipFile {fileName} ");
+            sb.Append(@"--backup D:\Przemek\Aktualizacje\ ");
+            sb.Append(@"--inetpub d:\inetpub\SelgrosPG\ ");
+            sb.Append($"--appversion {version} ");
+            sb.Append("--undo false");
 
             return sb.ToString();
         }
@@ -30,11 +31,12 @@ namespace SelgrosCopy
            var sb = new StringBuilder();
 
             sb.Append(@"d:\Przemek\ApplicationUpdate\ApplicationUpdater.exe ");
-            sb.Append($"{fileName} ");
-            sb.Append(@"D:\Przemek\Aktualizacje-Test\ ");
-            sb.Append(@"d:\inetpub\SelgrosPG_Test\ ");
-            sb.Append($"{version} ");
-            sb.Append("false");
+            sb.Append(@"--strategy Selgros ");
+            sb.Append($"--zipFile {fileName} ");
+            sb.Append(@"--backup D:\Przemek\Aktualizacje-Test\ ");
+            sb.Append(@"--inetpub d:\inetpub\SelgrosPG_Test\ ");
+            sb.Append($"--appversion {version} ");
+            sb.Append("--undo false");
 
             return sb.ToString();
         }
