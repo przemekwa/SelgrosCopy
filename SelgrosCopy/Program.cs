@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 
 namespace SelgrosCopy
@@ -57,9 +58,10 @@ namespace SelgrosCopy
             Console.WriteLine(@"   |   (----`|  |__   |  |     |  |  __  |  |_)  |    |  |  |  |    |   (----`");
             Console.WriteLine(@"    \   \    |   __|  |  |     |  | |_ | |      /     |  |  |  |     \   \    ");
             Console.WriteLine(@".----)   |   |  |____ |  `----.|  |__| | |  |\  \----.|  `--'  | .----)   |   ");
-            Console.WriteLine(@"|_______/    |_______||_______| \______| | _| `._____| \______/  |_______/   ");
+            Console.WriteLine($@"|_______/    |_______||_______| \______| | _| `._____| \______/  |_______/    {Assembly.GetEntryAssembly().GetName().Version}");
             Console.WriteLine();
-
+            
+            
 
             MakeStep(Steps.GetArtifacts, model);
             MakeStep(Steps.CreateDir, model);
