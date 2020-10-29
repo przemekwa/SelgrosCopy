@@ -10,13 +10,12 @@ namespace SelgrosCopy
         {
             var sb = new StringBuilder();
 
-            sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
-            sb.Append(@"Selgros ");
-            sb.Append($"{fileName} ");
-            sb.Append(@"D:\aktualizacje\ ");
-            sb.Append(@"D:\inetpub\selgrospg\ ");
-            sb.Append($"{version} ");
-            sb.Append("false");
+            sb.Append(@"D:\_DEV_FOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"--strategy Selgros ");
+            sb.Append($"--zipFile {fileName} ");
+            sb.Append(@"--backup D:\_DEV_FOLDER\backup\ ");
+            sb.Append(@"--inetpub D:\inetpub\selgrospg\ ");
+            sb.Append($"--appversion {version} ");
 
             return sb.ToString();
         }
@@ -25,13 +24,12 @@ namespace SelgrosCopy
         {
             var sb = new StringBuilder();
 
-            sb.Append(@"D:\Przemek\ApplicationUpdater\ApplicationUpdater.exe ");
-            sb.Append(@"Selgros ");
-            sb.Append($"{fileName} ");
-            sb.Append(@"D:\aktualizacje_test\ ");
-            sb.Append(@"D:\inetpub\selgrospg_test\ ");
-            sb.Append($"{version} ");
-            sb.Append("false");
+            sb.Append(@"D:\_DEV_FOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"--strategy Selgros ");
+            sb.Append($"--zipFile {fileName} ");
+            sb.Append(@"--backup D:\_DEV_FOLDER\backup_test\ ");
+            sb.Append(@"--inetpub D:\inetpub\selgrospg_test\ ");
+            sb.Append($"--appversion {version} ");
 
             return sb.ToString();
         }
