@@ -52,7 +52,7 @@ namespace SelgrosCopy
 
         private bool CreatePage(string title, string template)
         {
-            var rC = new RestClient("https://confluence.service.snp-ag.com/confluence/rest/api/content/");
+            var rC = new RestClient("https://confluence.service.snpgroup.com/rest/api/content/");
 
             var rq = new RestRequest(Method.POST)
             {
@@ -87,6 +87,7 @@ namespace SelgrosCopy
             };
 
             var serializedBody = JsonConvert.SerializeObject(body);
+
             rq.AddParameter("application/json", serializedBody, ParameterType.RequestBody);
 
             var result = rC.Execute(rq, Method.POST);
