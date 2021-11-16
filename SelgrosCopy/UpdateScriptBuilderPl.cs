@@ -10,11 +10,11 @@ namespace SelgrosCopy
         {
             var sb = new StringBuilder();
 
-            sb.Append(@"D:\_DEV_FOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"C:\_DEVFOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
             sb.Append(@"--strategy Selgros ");
             sb.Append($"--zipFile {fileName} ");
-            sb.Append(@"--backup D:\_DEV_FOLDER\backup\ ");
-            sb.Append(@"--inetpub D:\inetpub\selgrospg\ ");
+            sb.Append(@"--backup C:\_DEVFOLDER\backup\ ");
+            sb.Append(@"--inetpub C:\inetpub\wwwroot\pcb\ ");
             sb.Append($"--appversion {version} ");
 
             return sb.ToString();
@@ -24,11 +24,11 @@ namespace SelgrosCopy
         {
             var sb = new StringBuilder();
 
-            sb.Append(@"D:\_DEV_FOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
+            sb.Append(@"C:\_DEVFOLDER\ApplicationUpdater\ApplicationUpdater.exe ");
             sb.Append(@"--strategy Selgros ");
             sb.Append($"--zipFile {fileName} ");
-            sb.Append(@"--backup D:\_DEV_FOLDER\backup_test\ ");
-            sb.Append(@"--inetpub D:\inetpub\selgrospg_test\ ");
+            sb.Append(@"--backup C:\_DEVFOLDER\backup_test\ ");
+            sb.Append(@"--inetpub C:\inetpub\wwwroot\pcb_test\ ");
             sb.Append($"--appversion {version} ");
 
             return sb.ToString();
