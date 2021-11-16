@@ -52,7 +52,7 @@ namespace SelgrosCopy
 
         private bool CreatePage(string title, string template)
         {
-            var rC = new RestClient("https://confluence.service.snpgroup.com/rest/api/content/");
+            var rC = new RestClient("https://all41.atlassian.net/wiki/rest/api/content");
 
             var rq = new RestRequest(Method.POST)
             {
