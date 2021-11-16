@@ -15,9 +15,9 @@ namespace SelgrosCopy
         private SelgorsCopyModel selgorsCopyModel;
         private int id;
 
-           const int PAGE_UPDATE_POLAND_ID = 73539382;
-            const int PAGE_UPDATE_RUSIA_ID = 73539378;
-            const int PAGE_UPDATE_ROMANIA_ID = 73539779;
+           const int PAGE_UPDATE_POLAND_ID = 977772338;
+            const int PAGE_UPDATE_RUSIA_ID = 977772334;
+            const int PAGE_UPDATE_ROMANIA_ID = 977772735;
 
 
         public PageCreator(SelgorsCopyModel selgorsCopyModel)
@@ -60,7 +60,7 @@ namespace SelgrosCopy
             };
 
             rq.AddHeader("Content-Type", "application/json");
-            rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}"); // dotnet user-secrets set "Jira:Pass" "userName:password"
+            rq.AddHeader("Authorization", $"Basic {Base64Encode(selgorsCopyModel.Configuration["Jira:Pass"])}"); // dotnet user-secrets set "Jira:Pass" "userAsEmail:api-Key"
 
             var body = new Page
             {

@@ -2,7 +2,7 @@
   "profiles": {
     "SelgrosCopy": {
       "commandName": "Project",
-      "commandLineArgs": "-cPL -v9999 -l123 -r\"dsadasd\""
+      "commandLineArgs": "-v99.983 -cRU -l18115 -r \"\""
     }
   }
 }
