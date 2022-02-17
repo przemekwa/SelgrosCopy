@@ -92,7 +92,12 @@ namespace SelgrosCopy
 
             var result = rC.Execute(rq, Method.POST);
 
-            return result.StatusCode == System.Net.HttpStatusCode.OK;
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                throw new Exception($"Status code is:{result.StatusCode}");
+            }
+
+            return true;
         }
 
         private string GetTemplate()
